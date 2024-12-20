@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ssh-service
+    env: docker
+    plan: starter
+    dockerfilePath: Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: ROOT_PASSWORD
+        value: root
+    ports:
+      - 22
