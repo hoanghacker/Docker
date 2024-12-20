@@ -11,10 +11,5 @@ RUN apt-get update && apt-get install -y \
     speedtest-cli \
     && rm -rf /var/lib/apt/lists/*
 
-# Không cần cài đặt và cấu hình SSH nữa
-
-# Mở các cổng cần thiết cho dịch vụ khác nếu cần
-# EXPOSE 8080
-
-# Khởi động dịch vụ khi container khởi động, ví dụ một ứng dụng Python đơn giản
-# CMD ["python3", "app.py"]
+# Chạy một lệnh shell bất kỳ khi container khởi động
+CMD ["bash", "-c", "echo 'Container deployed successfully' && exec bash"]
