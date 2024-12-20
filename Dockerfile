@@ -3,21 +3,20 @@ FROM ubuntu:latest
 
 # Cập nhật hệ thống và cài đặt các gói cần thiết
 RUN apt-get update && apt-get install -y \
-    sudo \
     python3 \
     python3-pip \
-    procps \
-    htop \
-    speedtest-cli \
     curl \
     tmux \
     ca-certificates \
     gnupg \
     lsb-release \
+    procps \
+    htop \
+    speedtest-cli \
     && rm -rf /var/lib/apt/lists/*
 
 # Cài đặt Node.js và npm từ NodeSource
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - \
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
     && apt-get install -y npm
 
