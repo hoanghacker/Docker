@@ -15,10 +15,10 @@ RUN apt-get update && apt-get install -y \
     speedtest-cli \
     && rm -rf /var/lib/apt/lists/*
 
-# Cài đặt Node.js và npm từ NodeSource
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs \
-    && apt-get install -y npm
+# Cài đặt Node.js và npm từ kho phần mềm chính thức của Ubuntu
+RUN apt-get update && apt-get install -y \
+    nodejs \
+    npm
 
 # Cài đặt Python packages
 RUN pip3 install --no-cache-dir python-telegram-bot requests pytz termcolor colorama asyncio
