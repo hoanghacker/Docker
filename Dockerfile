@@ -11,5 +11,6 @@ RUN apt-get update && apt-get install -y \
     speedtest-cli \
     && rm -rf /var/lib/apt/lists/*
 
+
 # Chạy một lệnh shell bất kỳ khi container khởi động
-CMD ["bash", "-c", "echo 'Container deployed successfully' && exec bash"]
+CMD bash -c "echo 'Container deployed successfully' && tail -f /dev/null"
