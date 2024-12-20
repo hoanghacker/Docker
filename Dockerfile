@@ -1,7 +1,7 @@
 # Sử dụng Ubuntu làm base image
 FROM ubuntu:latest
 
-# Bước 2: Cài đặt các gói cần thiết
+# Cài đặt các gói cần thiết
 RUN apt-get update && apt-get install -y \
     sudo \
     python3 \
@@ -9,16 +9,12 @@ RUN apt-get update && apt-get install -y \
     procps \
     htop \
     speedtest-cli \
-    openssh-server \
     && rm -rf /var/lib/apt/lists/*
 
-# Bước 3: Cấu hình SSH
-RUN mkdir /var/run/sshd && echo 'root:root' | chpasswd && \
-    sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
-    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+# Không cần cài đặt và cấu hình SSH nữa
 
-# Bước 4: Mở cổng SSH
-EXPOSE 22
+# Mở các cổng cần thiết cho dịch vụ khác nếu cần
+# EXPOSE 8080
 
-# Bước 5: Chạy SSH khi container khởi động
-CMD ["/usr/sbin/sshd", "-D"]
+# Khởi động dịch vụ khi container khởi động, ví dụ một ứng dụng Python đơn giản
+# CMD ["python3", "app.py"]
